@@ -1,0 +1,40 @@
+---
+title: "Mixture of diversity"
+output:
+  html_notebook: default
+  pdf_document: default
+---
+#q = 0
+#####spider_open and spider_closed of diversity are reduced by Mixture of diversity.
+
+```{r}
+result_abun_spider[[1]][[1]]
+```
+#q0_proportion
+#####D_share is caculated by paper.
+#####unique to spider_open is equal to (D1-D_share)/D_mixture
+#####unique to spider_closed is equal to (D2-D_share)/D_mixture
+```{r}
+result_abun_spider[[1]][[2]]
+```
+```{r}
+rowSums(result_abun_spider[[1]][[2]][, 3:5])
+```
+#q = 1
+```{r}
+result_abun_spider[[2]]
+```
+#q = 2
+```{r}
+result_abun_spider[[3]]
+```
+
+```{r fig.height=10, fig.width=4, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(gridExtra)
+x1 = multi.plot(spider_new_abun, result_abun_spider)[[1]]
+grid.arrange(x1, ncol =1)
+```
+```{r fig.height=4, fig.width=4, message=FALSE, warning=FALSE, paged.print=FALSE}
+x1 = multi.plot(spider_new_abun, result_abun_spider)[[2]]
+grid.arrange(x1, ncol =1)
+```
